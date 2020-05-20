@@ -11,7 +11,7 @@ import (
 	"github.com/mattermost/mattermost-server/v5/plugin"
 )
 
-const minimumServerVersion = "5.16.0"
+const minimumServerVersion = "5.18.0"
 
 // SharePostPlugin implements the interface expected by the Mattermost server to communicate between the server and plugin processes.
 type SharePostPlugin struct {
