@@ -149,9 +149,6 @@ func (p *SharePostPlugin) sharePost(request *model.SubmitDialogRequest, toChanne
 	}
 	p.API.LogDebug("ROOT: ", "post_id", postID)
 	postList.UniqueOrder()
-	for k, post := range postList.Posts {
-		p.API.LogDebug("  - POST", "key", k, "post_id", post.Id, "root_id", post.RootId, "parent_id", post.ParentId, "replay_count", post.ReplyCount)
-	}
 
 	newPost := &model.Post{
 		Type:      model.POST_DEFAULT,
