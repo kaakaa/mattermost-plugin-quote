@@ -142,7 +142,6 @@ func (p *SharePostPlugin) sharePost(request *model.SubmitDialogRequest, toChanne
 		return messageGenericError, nil, fmt.Errorf("failed to get team %w", appErr)
 	}
 
-	// TODO: remove for debuggin lines
 	postList, appErr := p.API.GetPostThread(postID)
 	if appErr != nil {
 		p.API.LogError("failed to get post list", "post_id", postID, "error", appErr.Error())
@@ -152,18 +151,6 @@ func (p *SharePostPlugin) sharePost(request *model.SubmitDialogRequest, toChanne
 	postList.UniqueOrder()
 	for k, post := range postList.Posts {
 		p.API.LogDebug("  - POST", "key", k, "post_id", post.Id, "root_id", post.RootId, "parent_id", post.ParentId, "replay_count", post.ReplyCount)
-	}
-
-	dp := &model.Post{
-		Type:      model.POST_DEFAULT,
-		UserId:    request.UserId,
-		ChannelId: request.ChannelId,
-		Message:   "debug",
-		RootId:    postID,
-		ParentId:  postID,
-	}
-	if _, appErr := p.API.CreatePost(dp); appErr != nil {
-		p.API.LogDebug("failed to create post", "error", appErr.Error())
 	}
 
 	newPost := &model.Post{
