@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/kaakaa/mattermost-plugin-share-post/server/plugin"
+	"github.com/kaakaa/mattermost-plugin-sharepost/server/plugin"
 	mmplugin "github.com/mattermost/mattermost-server/v5/plugin"
 )
 
